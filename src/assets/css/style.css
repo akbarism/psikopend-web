@@ -1,0 +1,30 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.mt_50 {
+    margin-top: 50px;
+}
+
+.bg_default {
+    background: #edf1f0;
+}
+
+.child_h {
+    min-height: 92vh;
+}
+
+h1 {
+    line-height: normal !important;
+}
+
+.flexy {
+    flex: 1;
+}
+
+.default_txt {
+    color: #7f7f7f;
+    font-size: small;
+    margin-bottom: 0 !important;
+}

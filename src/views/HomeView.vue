@@ -1,18 +1,18 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <v-app-bar color="#EDF1F0" flat style="height: 8vh"></v-app-bar>
+    <SidebarDesktopVue />
+    <div class="side_active">
+      <router-view class="bg_default padding_main child_h"></router-view>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import SidebarDesktopVue from "@/components/base/SidebarDesktop.vue";
 export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
-  }
-}
+  name: "Home",
+
+  components: { SidebarDesktopVue },
+};
 </script>
