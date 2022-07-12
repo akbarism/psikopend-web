@@ -1,6 +1,7 @@
 <template>
   <div class="pa-3">
-    <div class="d-flex justify-end">
+    <div class="d-flex justify-space-between">
+      <h3>List User</h3>
       <v-btn
         class="text-capitalize"
         depressed

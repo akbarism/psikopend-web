@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import HomeView from "../views/Page/HomeView.vue";
 import store from "../store/index.js";
 
 Vue.use(VueRouter);
@@ -14,13 +14,50 @@ const routes = [
       {
         path: "/overview",
         name: "home",
-        component: () => import("../views/Overview.vue"),
+        component: () => import("../views/Page/Overview.vue"),
         meta: { requiresAuth: true },
       },
+
       {
         path: "/user-management",
         name: "manageUser",
         component: () => import("../views/user/manageUser.vue"),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: "/article-management",
+        name: "manageArticle",
+        component: () => import("../views/article/manageArticle.vue"),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: "/create-article",
+        name: "createArticle",
+        component: () => import("../views/article/createArticle.vue"),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: "/category-article-management",
+        name: "categoryArticleManagement",
+        component: () => import("../views/article/manageKategoriArtikel.vue"),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: "/update-article/:id",
+        name: "updateArticle",
+        component: () => import("../views/article/updateArticle"),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: "/about-management",
+        name: "aboutManagement",
+        component: () => import("../views/About/manageAbout.vue"),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: "/page-management",
+        name: "pageManagement",
+        component: () => import("../views/managePage/manageKategoriPage.vue"),
         meta: { requiresAuth: true },
       },
     ],
@@ -28,14 +65,25 @@ const routes = [
   {
     path: "/",
     name: "Welcome",
-    component: () => import("../views/Welcome"),
+    component: () => import("../views/Page/Welcome"),
     meta: { requiresVisitor: true },
   },
-
+  {
+    path: "/profile",
+    name: "Profileview",
+    component: () => import("../views/Page/profileView"),
+    meta: { requiresVisitor: true },
+  },
+  {
+    path: "/all-article",
+    name: "allArticle",
+    component: () => import("../views/Page/beritaArtikelView.vue"),
+    meta: { requiresVisitor: true },
+  },
   {
     path: "/login",
     name: "login",
-    component: () => import("../views/Login.vue"),
+    component: () => import("../views/Page/Login.vue"),
     meta: { requiresVisitor: true },
   },
 ];

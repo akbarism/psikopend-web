@@ -34,6 +34,21 @@ export default {
           path: "/user-management",
           icon: "mdi-account-cog-outline",
         },
+        {
+          name: "Article Management",
+          path: "/article-management",
+          icon: "mdi-book-open",
+        },
+        {
+          name: "About",
+          path: "/about-management",
+          icon: "mdi-information-outline",
+        },
+        {
+          name: "Page",
+          path: "/page-management",
+          icon: "mdi-page-previous",
+        },
       ],
     };
   },

@@ -4,20 +4,20 @@
     :permanent="drawer"
     v-model="expander"
     class="sidebar_desktop"
-    style="padding: 10px; background-color: #edf1f0;"
+    style="padding: 10px; background-color: #edf1f0"
     floating
   >
     <v-card outlined min-height="100%">
-      <div class="rounded_side py-3">
-        <div class="px-3 pb-3 d-flex align-center">
+      <div class="rounded_side pb-3">
+        <v-card color="purple" flat class="pa-3 pb-3 d-flex align-center">
           <img
-            src="../../assets/img/logo-upi.png"
+            src="../../assets/img/logo_nav.png"
             height="50px"
             class="mr-2"
             alt=""
           />
-          <h2 class="purple--text">Psikopend</h2>
-        </div>
+          <!-- <h2 class="purple--text">Psikopend</h2> -->
+        </v-card>
         <SidebarVue />
       </div>
     </v-card>
@@ -63,7 +63,6 @@ export default {
 </script>
 
 <style scoped>
-
 .v-list-item__icon {
   min-width: 10px !important;
   margin-left: 0 !important;
