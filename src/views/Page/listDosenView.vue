@@ -70,6 +70,9 @@ export default {
     };
   },
   components: { Navbar },
+  mounted() {
+    window.scrollTo(0, 0);
+  },
 };
 </script>
 

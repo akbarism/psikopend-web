@@ -6,6 +6,10 @@ import vuetify from "./plugins/vuetify";
 import "./assets/css/style.css";
 import "./plugins/Dayjs";
 
+import viewImage from "./components/base/viewImage.vue";
+
+Vue.component('viewImage',viewImage);
+
 import Vue2Editor from "vue2-editor";
 Vue.use(Vue2Editor);
 import Toast from "vue-toastification";

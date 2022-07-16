@@ -55,6 +55,36 @@ const routes = [
         meta: { requiresAuth: true },
       },
       {
+        path: "/slide-management",
+        name: "slideManagement",
+        component: () => import("../views/slideUnggulan/manageUnggulan.vue"),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: "/dosen-management",
+        name: "dosenManagement",
+        component: () => import("../views/listDosen/manageDosen.vue"),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: "/testimoni-management",
+        name: "testimoniManagement",
+        component: () => import("../views/Testimoni/manageTestimoni.vue"),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: "/sertifikasi-management",
+        name: "sertifikasiManagement",
+        component: () => import("../views/Sertifikasi/manageSertifikasi.vue"),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: "/gallery-management",
+        name: "galleryManagement",
+        component: () => import("../views/Gallery/manageGaleri.vue"),
+        meta: { requiresAuth: true },
+      },
+      {
         path: "/page-management",
         name: "pageManagement",
         component: () => import("../views/managePage/manageKategoriPage.vue"),
@@ -85,6 +115,11 @@ const routes = [
     name: "login",
     component: () => import("../views/Page/Login.vue"),
     meta: { requiresVisitor: true },
+  },
+  {
+    path: "/view-content/:id",
+    name: "pageManagement",
+    component: () => import("../views/article/viewArticle.vue"),
   },
 ];
 

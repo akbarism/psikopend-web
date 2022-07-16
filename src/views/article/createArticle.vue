@@ -168,6 +168,7 @@ export default {
       content: "",
       loading: false,
       picture: null,
+      alert: false,
       form: {
         judul: "",
         konten: "",
@@ -191,6 +192,7 @@ export default {
     };
   },
   mounted() {
+    window.scrollTo(0, 0);
     this.fetchCategory();
   },
   methods: {
@@ -242,12 +244,17 @@ export default {
     },
     uploadImage(e) {
       const file = e.target.files[0];
-      const fr = new FileReader();
-      fr.onload = (f) => {
-        this.picture = f.target.result;
-      };
-      fr.readAsDataURL(file);
-      this.form.featured_image = file;
+      if (file.size > 250000) {
+        this.$toast.error("Foto tidak boleh lebih dari 2mb!");
+        this.alert = true;
+      } else {
+        const fr = new FileReader();
+        fr.onload = (f) => {
+          this.picture = f.target.result;
+        };
+        fr.readAsDataURL(file);
+        this.form.featured_image = file;
+      }
     },
     async postData() {
       this.loading = true;

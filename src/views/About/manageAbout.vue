@@ -31,6 +31,15 @@
           </div>
         </div>
         <div class="flexy">
+          <v-text-field
+            label="nama Ketua Prodi"
+            v-model="form.name"
+            class="mb-3"
+            outlined
+            background-color="white"
+            dense
+            hide-details
+          ></v-text-field>
           <vue-editor
             id="editor"
             class="white"
@@ -104,6 +113,7 @@ export default {
       ],
       form: {
         sambutan: "",
+        nama: "",
         sejarah: "",
         visi: "",
         misi: [{ val: "" }],

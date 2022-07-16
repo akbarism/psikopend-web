@@ -35,7 +35,12 @@
       </div>
       <div v-else>
         <v-row>
-          <v-col cols="4" v-for="(item, i) in dataSet" :key="`data-${i}`">
+          <v-col
+            cols="4"
+            v-for="(item, i) in dataSet"
+            :key="`data-${i}`"
+            @click="navigate(item)"
+          >
             <img :src="item.foto" class="img_news" alt="" />
             <p
               class="mb-1"
@@ -70,9 +75,14 @@ export default {
     };
   },
   mounted() {
+    window.scrollTo(0, 0);
     this.fetchData();
   },
   methods: {
+    navigate(item) {
+      console.log(item);
+      this.$router.push(`view-content/${item.id}`);
+    },
     async fetchData() {
       this.loading = true;
       let data = {

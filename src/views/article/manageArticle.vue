@@ -33,6 +33,18 @@
           hide-default-footer
           :single-select="false"
         >
+          <template v-slot:[`item.featured_image`]="{ item }">
+            <div v-if="item.foto">
+              <v-btn
+                color="blue"
+                @click="viewImage(item.foto)"
+                dark
+                depressed
+                class="text-capitalize"
+                >view Image</v-btn
+              >
+            </div>
+          </template>
           <template v-slot:[`item.actions`]="{ item }">
             <div class="d-flex">
               <v-tooltip top>
@@ -86,6 +98,11 @@
         :type="d_type"
         :title="d_title"
       />
+      <viewImage
+        :d_vimage="d_vimage"
+        @close="d_vimage = false"
+        :image="vimage"
+      />
     </div>
   </div>
 </template>
@@ -100,6 +117,9 @@ export default {
   },
   data() {
     return {
+      vimage: "",
+      d_vimage: false,
+
       d_show: false,
       d_type: null,
       d_width: "500px",
@@ -140,6 +160,10 @@ export default {
     this.fetchData();
   },
   methods: {
+    viewImage(foto) {
+      this.vimage = foto;
+      this.d_vimage = true;
+    },
     updateUser(item) {
       this.$router.push(`/update-article/${item.id}`);
     },

@@ -39,6 +39,32 @@ export default {
           path: "/article-management",
           icon: "mdi-book-open",
         },
+
+        {
+          name: "Slide Unggulan",
+          path: "/slide-management",
+          icon: "mdi-cards-variant",
+        },
+        {
+          name: "Dosen Pengampu",
+          path: "/dosen-management",
+          icon: "mdi-account-box-outline",
+        },
+        {
+          name: "Sertifikasi",
+          path: "/sertifikasi-management",
+          icon: "mdi-certificate",
+        },
+        {
+          name: "Testimoni",
+          path: "/testimoni-management",
+          icon: "mdi-tooltip",
+        },
+        {
+          name: "Gallery",
+          path: "/gallery-management",
+          icon: "mdi-view-gallery",
+        },
         {
           name: "About",
           path: "/about-management",
