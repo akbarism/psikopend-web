@@ -90,7 +90,80 @@ h1 {
     object-fit: cover;
 }
 
+.objectfit {
+    object-fit: cover;
+}
+
 .relative_bg {
     position: relative;
     margin-right: 100px;
+}
+
+.temp_qupte {
+    display: flex;
+}
+
+.chevron_right {
+    display: block;
+}
+
+.img_kegiatan {
+    height: 350px;
+}
+
+.temp_kegiatan {
+    display: flex;
+}
+
+.other_btn {
+    display: none;
+}
+
+@media (max-width: 1200px) {}
+
+@media (max-width: 992px) {
+    .px_100 {
+        padding: 0 100px;
+    }
+
+    .img_kegiatan {
+        height: 250px;
+    }
+}
+
+@media (max-width: 830px) {
+    .temp_kegiatan {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .chevron_right {
+        display: none;
+    }
+
+    .other_btn {
+        display: block;
+    }
+
+    .temp_qupte {
+        display: block;
+    }
+}
+
+@media (max-width: 576px) {
+    .px_100 {
+        padding: 0 50px;
+    }
+
+    .img_kegiatan {
+        height: 200px;
+    }
+
+}
+
+@media (max-width: 375px) {
+    .px_100 {
+        padding: 0 20px;
+    }
 }

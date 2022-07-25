@@ -59,6 +59,7 @@
               background-color="white"
               dense
               hide-details
+              
               v-model="form.konten"
             ></v-textarea>
             <div class="py-3">

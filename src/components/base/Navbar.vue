@@ -38,8 +38,8 @@
         <div class="menu_item" @click="redirectTo('/all-article')">
           Berita & Artikel
         </div>
-        <div class="menu_item">Mahasiswa</div>
-        <div class="menu_item">Galeri</div>
+        <div class="menu_item">Kegiatan Mahasiswa</div>
+        <div class="menu_item" @click="redirectTo('/gallery')">Galeri</div>
         <div class="menu_item">Alumni</div>
       </div>
     </nav>
@@ -76,7 +76,9 @@ export default {
   },
   methods: {
     redirectTo(path) {
-      this.$router.push(path);
+      if (this.$route.path !== path) {
+        this.$router.push(path);
+      }
     },
     show(e) {
       e.preventDefault();

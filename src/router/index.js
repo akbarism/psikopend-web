@@ -105,6 +105,12 @@ const routes = [
     meta: { requiresVisitor: true },
   },
   {
+    path: "/gallery",
+    name: "galleryView",
+    component: () => import("../views/Page/galleryView"),
+    meta: { requiresVisitor: true },
+  },
+  {
     path: "/all-article",
     name: "allArticle",
     component: () => import("../views/Page/beritaArtikelView.vue"),
@@ -118,7 +124,7 @@ const routes = [
   },
   {
     path: "/view-content/:id",
-    name: "pageManagement",
+    name: "viewArticle",
     component: () => import("../views/article/viewArticle.vue"),
   },
 ];

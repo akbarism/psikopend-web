@@ -53,7 +53,7 @@
         type="image"
       ></v-skeleton-loader>
     </div>
-    <div class="px_100 d-flex quotation" v-if="!getingAbout && dataAbout">
+    <div class="px_100 temp_qupte quotation" v-if="!getingAbout && dataAbout">
       <div class="relative_bg">
         <img :src="dataAbout.image" class="larger_ava" alt="" />
         <div class="circle_quote">
@@ -85,10 +85,10 @@
     <div class="px_100">
       <p style="font-size: 32px; font-weight: 700">Kegiatan Terbaru</p>
       <div class="d-flex align-center">
-        <div style="width: 95%" class="d-flex">
+        <div style="width: 95%" class="temp_kegiatan">
           <img
             src="../../assets/img/kegiatan_dummy.png"
-            height="350px"
+            class="img_kegiatan"
             alt=""
           />
           <div class="pa-3 d-flex align-end">
@@ -108,18 +108,35 @@
             </div>
           </div>
         </div>
-        <div style="width: 5%">
+        <div style="width: 5%" class="chevron_right">
           <v-icon size="100" @click="toPage('all-article')"
             >mdi-chevron-right</v-icon
           >
         </div>
+      </div>
+      <div class="d-flex justify-end pa-3 other_btn">
+        <v-btn
+          color="purple"
+          class="text-capitalize"
+          @click="toPage('all-article')"
+          text
+          >Kegiatan Lainya
+          <v-icon class="ml-2">mdi-chevron-right</v-icon>
+        </v-btn>
       </div>
       <div style="height: 50px"></div>
       <p style="font-size: 32px; font-weight: 700">Berita & Artikel</p>
       <div class="d-flex" v-if="dataArticle">
         <div style="width: 95%" class="d-flex">
           <v-row>
-            <v-col cols="4" v-for="(item, i) in dataArticle" :key="i">
+            <v-col
+              cols="12"
+              sm="12"
+              md="6"
+              lg="4"
+              v-for="(item, i) in dataArticle"
+              :key="i"
+            >
               <img :src="item.foto" class="img_news" alt="" />
               <p
                 class="mb-1"
@@ -139,7 +156,7 @@
             </v-col>
           </v-row>
         </div>
-        <div style="width: 5%">
+        <div style="width: 5%" class="chevron_right">
           <v-icon
             size="100"
             @click="toPage('all-article')"
@@ -148,7 +165,25 @@
           >
         </div>
       </div>
+      <v-row v-if="getingArticle">
+        <v-col cols="1" md="4" lg="4" v-for="i in 3" :key="`news-${i}`">
+          <v-card style="overflow: hidden">
+            <v-skeleton-loader type="card"></v-skeleton-loader>
+          </v-card>
+        </v-col>
+      </v-row>
+      <div class="d-flex justify-end pa-3 other_btn">
+        <v-btn
+          color="purple"
+          class="text-capitalize"
+          @click="toPage('all-article')"
+          text
+          >Semua Berita & artikel
+          <v-icon class="ml-2">mdi-chevron-right</v-icon>
+        </v-btn>
+      </div>
     </div>
+    <SertifikasiComponent />
     <Footer />
   </div>
 </template>
@@ -157,8 +192,9 @@
 import TitleLine from "@/components/base/TitleLine.vue";
 import Navbar from "@/components/base/Navbar.vue";
 import Footer from "@/components/base/Footer.vue";
+import SertifikasiComponent from "../Sertifikasi/sertifikasiComponent.vue";
 export default {
-  components: { TitleLine, Navbar, Footer },
+  components: { TitleLine, Navbar, Footer, SertifikasiComponent },
   name: "welcome",
   data() {
     return {

@@ -34,14 +34,16 @@
               </div>
               <div v-else>
                 <img :src="picture" class="cover_pic" alt="" />
-                <v-btn
-                  color="blue"
-                  class="text-capitalize"
-                  @click="picture = null"
-                  depressed
-                  dark
-                  >cancel</v-btn
-                >
+                <div>
+                  <v-btn
+                    color="blue"
+                    class="text-capitalize"
+                    @click="picture = null"
+                    depressed
+                    dark
+                    >cancel</v-btn
+                  >
+                </div>
               </div>
             </div>
             <v-text-field
@@ -53,14 +55,16 @@
               dense
               hide-details
             ></v-text-field>
-            <v-textarea
-              label="Deskripsi singkat"
+            <v-text-field
+              label="Tahun"
+              v-model="form.konten"
+              class="mb-3"
               outlined
               background-color="white"
               dense
               hide-details
-              v-model="form.konten"
-            ></v-textarea>
+            ></v-text-field>
+
             <div class="py-3">
               <v-btn color="purple" dark block v-if="!loading" @click="postData"
                 >Simpan</v-btn
