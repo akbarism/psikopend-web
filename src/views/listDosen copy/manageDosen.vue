@@ -1,23 +1,15 @@
 <template>
   <div class="pa-3">
     <div class="d-flex justify-space-between">
-      <h3>List Article</h3>
+      <h3>List Dosen Pengampu</h3>
       <div class="d-flex">
         <v-btn
           class="text-capitalize mr-3"
           depressed
           dark
           color="blue"
-          to="/create-article"
-          >Add Article</v-btn
-        >
-        <v-btn
-          class="text-capitalize"
-          depressed
-          dark
-          color="blue"
-          to="/category-article-management"
-          >Manage Category</v-btn
+          @click="d_create = true"
+          >Add Data</v-btn
         >
       </div>
     </div>
@@ -33,28 +25,11 @@
           hide-default-footer
           :single-select="false"
         >
-          <template v-slot:[`item.artikel_kategori`]="{ item }">
-            <div class="d-flex flex-wrap">
-              <v-chip
-                v-for="(cat, i) in item.artikel_kategori"
-                :key="`chip${i}`"
-                class="ma-2"
-                color="primary"
-              >
-                {{ cat.kategori.name }}
-              </v-chip>
-            </div>
-          </template>
           <template v-slot:[`item.featured_image`]="{ item }">
             <div v-if="item.foto">
-              <v-btn
-                color="blue"
-                @click="viewImage(item.foto)"
-                dark
-                depressed
-                class="text-capitalize"
-                >view Image</v-btn
-              >
+              <v-avatar>
+                <img :src="item.foto" alt="Avatar" />
+              </v-avatar>
             </div>
           </template>
           <template v-slot:[`item.actions`]="{ item }">
@@ -70,7 +45,7 @@
                     class="text-capitalize"
                     v-bind="attrs"
                     v-on="on"
-                    @click="updateUser(item)"
+                    @click="updateItem(item)"
                   >
                     <v-icon small dark>mdi-pencil </v-icon>
                   </v-btn>
@@ -101,10 +76,28 @@
       </div>
     </v-card>
     <div class="pa-3">
-      <DialogArticle
-        :d_show="d_show"
+      <create-unggulan
+        :d_create="d_create"
         @refetch="fetchData"
+        @close="d_create = false"
+        :width="d_width"
+        :inventory="inventory"
+        :type="d_type"
+        :title="d_title"
+      />
+      <update-unggulan
+        :d_update="d_update"
+        @refetch="fetchData"
+        @close="d_update = false"
+        :width="d_width"
+        :inventory="inventory"
+        :type="d_type"
+        :title="d_title"
+      />
+      <dialog-user
+        :d_show="d_show"
         @close="d_show = false"
+        @refetch="fetchData"
         :width="d_width"
         :inventory="inventory"
         :type="d_type"
@@ -120,18 +113,25 @@
 </template>
 
 <script>
-import DialogArticle from "./dialogArticle.vue";
+import DialogUser from "../user/dialogUser.vue";
+import CreateUnggulan from "./createDosen.vue";
+import UpdateUnggulan from "./updateDosen.vue";
 
 export default {
-  name: "manageArticle",
+  name: "manageUnggulan",
   components: {
-    DialogArticle,
+    CreateUnggulan,
+    DialogUser,
+    UpdateUnggulan,
   },
   data() {
     return {
+      id: 11,
       vimage: "",
       d_vimage: false,
-
+      d_create: false,
+      d_create: false,
+      d_update: false,
       d_show: false,
       d_type: null,
       d_width: "500px",
@@ -144,26 +144,22 @@ export default {
       dataSet: [],
       headers: [
         {
-          text: "ID",
-          align: "start",
-          value: "id",
+          text: "",
+          sortable: false,
+          value: "featured_image",
         },
         {
-          text: "JUDUL",
+          text: "NAMA DOSEN",
           align: "start",
           sortable: false,
           value: "judul",
         },
         {
-          text: "KATEGORI",
+          text: "DESKRIPSI",
           sortable: false,
-          value: "artikel_kategori",
+          value: "konten",
         },
-        {
-          text: "COVER",
-          sortable: false,
-          value: "featured_image",
-        },
+
         { text: "ACTION", sortable: false, value: "actions", cols: "action" },
       ],
     };
@@ -182,7 +178,7 @@ export default {
     async fetchData() {
       this.loading = true;
       let data = {
-        path: `artikel?page[number]=${this.page}&page[size]=${this.limit}&filter[judul]=${this.find}`,
+        path: `pagelist?filter[kategori_id]=${this.id}&page[number]=${this.page}&page[size]=${this.limit}`,
       };
       try {
         let res = await this.$store.dispatch("getData", data);
@@ -195,12 +191,25 @@ export default {
       }
     },
 
+    updateItem(item) {
+      this.inventory = {
+        id: item.id,
+        judul: item.judul,
+        konten: item.konten,
+        featured_image: null,
+        picture: item.foto,
+        status_id: 2,
+        kategori_id: this.id,
+      };
+      this.d_update = true;
+    },
+
     deleteItem(item) {
-      this.d_type = "delete";
+      this.d_type = "d_user";
       this.d_title = "";
       this.d_width = "300px";
       this.inventory = {
-        path: `artikel?id=${item.id}`,
+        path: `pagelist?id=${item.id}`,
         method: "deleteData",
       };
       this.d_show = true;

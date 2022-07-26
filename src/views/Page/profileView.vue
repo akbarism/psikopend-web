@@ -77,13 +77,13 @@
               class="test pa-2"
               style="height: 100% !important"
             >
-              <v-card class="pa-3" min-height="254px">
+              <v-card class="pa-3">
                 <div>
-                  <div class="d-flex align-start">
+                  <div class="d-flex align-start" style="height: 88px">
                     <v-icon size="x-large" class="mr-3" color="blue"
                       >mdi-comment-quote</v-icon
                     >
-                    <p class="flexy">{{ item.konten }}</p>
+                    <p class="flexy" v-snip="3">{{ item.konten }}</p>
                   </div>
                   <div class="d-flex justify-end align-center">
                     <img :src="item.foto" height="70px" class="mr-3" alt="" />

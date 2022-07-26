@@ -4,12 +4,13 @@ import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
 import "./assets/css/style.css";
+import "./assets/css/qleditor.css";
 import "./plugins/Dayjs";
-
+import VueSnip from "vue-snip";
 import viewImage from "./components/base/viewImage.vue";
 
-Vue.component('viewImage',viewImage);
-
+Vue.component("viewImage", viewImage);
+Vue.use(VueSnip);
 import Vue2Editor from "vue2-editor";
 Vue.use(Vue2Editor);
 import Toast from "vue-toastification";

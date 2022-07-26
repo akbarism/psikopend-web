@@ -1,23 +1,15 @@
 <template>
   <div class="pa-3">
     <div class="d-flex justify-space-between">
-      <h3>List Article</h3>
+      <h3>Kegiatan Mahasiswa</h3>
       <div class="d-flex">
         <v-btn
           class="text-capitalize mr-3"
           depressed
           dark
           color="blue"
-          to="/create-article"
-          >Add Article</v-btn
-        >
-        <v-btn
-          class="text-capitalize"
-          depressed
-          dark
-          color="blue"
-          to="/category-article-management"
-          >Manage Category</v-btn
+          to="/create-kegmah"
+          >Add Data</v-btn
         >
       </div>
     </div>
@@ -129,6 +121,7 @@ export default {
   },
   data() {
     return {
+      id: 14,
       vimage: "",
       d_vimage: false,
 
@@ -177,12 +170,12 @@ export default {
       this.d_vimage = true;
     },
     updateUser(item) {
-      this.$router.push(`/update-article/${item.id}`);
+      this.$router.push(`/update-kegmah/${item.id}`);
     },
     async fetchData() {
       this.loading = true;
       let data = {
-        path: `artikel?page[number]=${this.page}&page[size]=${this.limit}&filter[judul]=${this.find}`,
+        path: `pagelist?filter[kategori_id]=${this.id}&page[number]=${this.page}&page[size]=${this.limit}`,
       };
       try {
         let res = await this.$store.dispatch("getData", data);
@@ -200,7 +193,7 @@ export default {
       this.d_title = "";
       this.d_width = "300px";
       this.inventory = {
-        path: `artikel?id=${item.id}`,
+        path: `pagelist?id=${item.id}`,
         method: "deleteData",
       };
       this.d_show = true;

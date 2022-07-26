@@ -38,7 +38,7 @@
       </v-row>
     </div>
     <div style="height: 100px">
-      <ViewGaleri
+      <viewGaleri
         :d_vimage="d_vimage"
         @close="d_vimage = false"
         :gallery="vimage"
@@ -51,6 +51,9 @@
 import viewGaleri from "../Gallery/viewGaleri.vue";
 export default {
   name: "componentSertifikasi",
+  components: {
+    viewGaleri,
+  },
   data() {
     return {
       loading: false,

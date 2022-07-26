@@ -84,27 +84,19 @@
     <div style="height: 50px"></div>
     <div class="px_100">
       <p style="font-size: 32px; font-weight: 700">Kegiatan Terbaru</p>
-      <div class="d-flex align-center">
+      <div class="d-flex align-center" v-if="dataEvt">
         <div style="width: 95%" class="temp_kegiatan">
-          <img
-            src="../../assets/img/kegiatan_dummy.png"
-            class="img_kegiatan"
-            alt=""
-          />
+          <img :src="dataEvt.foto" class="img_kegiatan" alt="" />
           <div class="pa-3 d-flex align-end">
             <div>
               <p class="mb-0" style="font-weight: 700; font-size: 22px">
-                Gerakan Cipta Cinta Lingkungan
+                {{ dataEvt.judul }}
               </p>
               <p style="font-family: Lato; font-size: 14px; font-weight: 400">
-                Minggu, 27 April 2022, Taman Hutan Raya Dago Bandung
+                {{ $date(dataEvt.created_at).format("dddd, DD MMMM YYYY") }},
+                Taman Hutan Raya Dago Bandung
               </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                sodales dui sit amet nisl tempus, et pretium nisl eleifend.
-                Suspendisse eu vulputate ante. Maecenas ullamcorper leo in elit
-                porttitor vestibulum.
-              </p>
+              <p v-snip="5" v-html="dataEvt.konten"></p>
             </div>
           </div>
         </div>
@@ -168,7 +160,7 @@
       <v-row v-if="getingArticle">
         <v-col cols="1" md="4" lg="4" v-for="i in 3" :key="`news-${i}`">
           <v-card style="overflow: hidden">
-            <v-skeleton-loader type="card"></v-skeleton-loader>
+            <v-skeleton-loader max-width="300" type="card"></v-skeleton-loader>
           </v-card>
         </v-col>
       </v-row>
@@ -263,6 +255,7 @@ export default {
         if (exist.length) {
           this.dataArticle = exist;
         }
+        this.getEvt();
         this.getingArticle = false;
       } catch (err) {
         console.log(err);
@@ -272,13 +265,13 @@ export default {
     async getEvt() {
       this.getingEvt = true;
       let data = {
-        path: `page?filter[id]=1`,
+        path: `pagelist?filter[kategori_id]=14`,
       };
       try {
         let res = await this.$store.dispatch("getData", data);
         let exist = res.data.data;
         if (exist.length) {
-          this.dataEvt = exist;
+          this.dataEvt = exist[0];
         }
         this.getingEvt = false;
       } catch (err) {

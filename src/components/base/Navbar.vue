@@ -38,7 +38,9 @@
         <div class="menu_item" @click="redirectTo('/all-article')">
           Berita & Artikel
         </div>
-        <div class="menu_item">Kegiatan Mahasiswa</div>
+        <div class="menu_item" @click="redirectTo('/all-kegiatanmahasiswa')">
+          Kegiatan Mahasiswa
+        </div>
         <div class="menu_item" @click="redirectTo('/gallery')">Galeri</div>
         <div class="menu_item">Alumni</div>
       </div>
@@ -61,7 +63,6 @@ export default {
         { title: "Tentang Kami", path: "/profile" },
         { title: "Profile Lulusan", path: "/lulusan" },
         { title: "Dosen Pengampu", path: "/sambutan" },
-        { title: "Testimoni", path: "/sambutan" },
       ],
       akademik: [
         { title: "Kurikulum", path: "/sambutan" },

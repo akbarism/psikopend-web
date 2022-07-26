@@ -6,20 +6,16 @@
       <v-col cols="12" md="8">
         <div style="padding: 50px" v-if="!loading && dataSet">
           <p>
-            {{ $date(dataSet.created_at).format("D MMM") }} |
+            {{ $date(dataSet.created_at).format("D MMM") }} | |
             {{ item.updated_by.name }}
           </p>
           <v-divider></v-divider>
           <p class="title_article mb-3">
             {{ dataSet.judul }}
           </p>
-          <p>
-            {{ dataSet.deskripsi_pendek }}
-          </p>
           <img :src="dataSet.foto" class="mb-3 image_artikel" alt="" />
-          <div class="py-3 ql-editor">
-            <p v-html="dataSet.konten"></p>
-          </div>
+
+          <p v-html="dataSet.konten"></p>
         </div>
       </v-col>
       <v-col>

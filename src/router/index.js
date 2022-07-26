@@ -31,6 +31,18 @@ const routes = [
         meta: { requiresAuth: true },
       },
       {
+        path: "/kegmah-management",
+        name: "kegmah",
+        component: () => import("../views/kegiatanMahasiswa/manageKegMah.vue"),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: "/create-kegmah",
+        name: "createKegmah",
+        component: () => import("../views/kegiatanMahasiswa/createKegMah.vue"),
+        meta: { requiresAuth: true },
+      },
+      {
         path: "/create-article",
         name: "createArticle",
         component: () => import("../views/article/createArticle.vue"),
@@ -46,6 +58,12 @@ const routes = [
         path: "/update-article/:id",
         name: "updateArticle",
         component: () => import("../views/article/updateArticle"),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: "/update-kegmah/:id",
+        name: "updateArticle",
+        component: () => import("../views/kegiatanMahasiswa/updateKegMah.vue"),
         meta: { requiresAuth: true },
       },
       {
@@ -117,6 +135,12 @@ const routes = [
     meta: { requiresVisitor: true },
   },
   {
+    path: "/all-kegiatanmahasiswa",
+    name: "allArticle",
+    component: () => import("../views/Page/kegiatanMahasiswaView.vue"),
+    meta: { requiresVisitor: true },
+  },
+  {
     path: "/login",
     name: "login",
     component: () => import("../views/Page/Login.vue"),
@@ -126,6 +150,11 @@ const routes = [
     path: "/view-content/:id",
     name: "viewArticle",
     component: () => import("../views/article/viewArticle.vue"),
+  },
+  {
+    path: "/view-content-kegmah/:id",
+    name: "viewKegmeh",
+    component: () => import("../views/kegiatanMahasiswa/viewKegMah.vue"),
   },
 ];
 

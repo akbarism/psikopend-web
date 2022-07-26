@@ -66,6 +66,16 @@ export default {
           icon: "mdi-view-gallery",
         },
         {
+          name: "Kegiatan Mahasiswa",
+          path: "/kegmah-management",
+          icon: "mdi-car-brake-fluid-level",
+        },
+        {
+          name: "Profile Lulusan",
+          path: "/profile-lulusan",
+          icon: "mdi-account-school",
+        },
+        {
           name: "About",
           path: "/about-management",
           icon: "mdi-information-outline",
