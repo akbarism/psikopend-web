@@ -73,6 +73,13 @@ const routes = [
         meta: { requiresAuth: true },
       },
       {
+        path: "/manage-profile-lulusan",
+        name: "manageprofilelulusan",
+        component: () =>
+          import("../views/profileLulusan/manageProfileLulusan.vue"),
+        meta: { requiresAuth: true },
+      },
+      {
         path: "/slide-management",
         name: "slideManagement",
         component: () => import("../views/slideUnggulan/manageUnggulan.vue"),
@@ -103,9 +110,21 @@ const routes = [
         meta: { requiresAuth: true },
       },
       {
-        path: "/page-management",
+        path: "/list-page-management",
         name: "pageManagement",
         component: () => import("../views/managePage/manageKategoriPage.vue"),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: "/manage-akademik",
+        name: "manageAkademik",
+        component: () => import("../views/Akademik/menuAkademik.vue"),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: "/akademik/:id/:type",
+        name: "manageChildAkademmik",
+        component: () => import("../views/Akademik/manageItemAkademik.vue"),
         meta: { requiresAuth: true },
       },
     ],
@@ -155,6 +174,11 @@ const routes = [
     path: "/view-content-kegmah/:id",
     name: "viewKegmeh",
     component: () => import("../views/kegiatanMahasiswa/viewKegMah.vue"),
+  },
+  {
+    path: "/view-dosen",
+    name: "viewDosen",
+    component: () => import("../views/Page/listDosenView.vue"),
   },
 ];
 

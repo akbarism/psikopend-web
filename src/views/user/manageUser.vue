@@ -136,8 +136,8 @@ export default {
       };
       try {
         let res = await this.$store.dispatch("getData", data);
-        console.log(res);
-        this.dataSet = res.data.data;
+          this.dataSet = res.data.data;
+      
         this.loading = false;
       } catch (err) {
         console.log(err);

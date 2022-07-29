@@ -30,7 +30,7 @@
                 {{ gallery.judul }}
               </h3>
               <p class="grey--text">
-                by {{ gallery.updated_by }} at
+                by {{ gallery.updated_by.name }} at
                 {{ $date(gallery.created_at).format("dddd, DD MMM YYYY") }}
               </p>
               <p>{{ gallery.konten }}</p>

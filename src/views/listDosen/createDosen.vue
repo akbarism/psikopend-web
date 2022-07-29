@@ -53,14 +53,70 @@
               dense
               hide-details
             ></v-text-field>
-            <v-textarea
-              label="Deskripsi"
+            <v-text-field
+              label="Jabatan Akademik"
+              v-model="konten.jabatan"
+              class="mb-3"
               outlined
               background-color="white"
               dense
               hide-details
-              v-model="form.konten"
-            ></v-textarea>
+            ></v-text-field>
+            <v-divider></v-divider>
+
+            <div class="pa-3">
+              <h3 class="mb-3">Riwayat Pendidikan/Pengalaman Kerja</h3>
+              <v-select
+                :items="category"
+                label="Kategori"
+                v-model="history.category"
+                class="mb-3"
+                outlined
+                background-color="white"
+                dense
+                hide-details
+              ></v-select>
+              <v-text-field
+                label="Pendidikan/PT"
+                v-model="history.value"
+                class="mb-3"
+                outlined
+                background-color="white"
+                dense
+                hide-details
+              ></v-text-field>
+              <v-text-field
+                label="Bidang Keahlian"
+                v-model="history.keahlian"
+                class="mb-3"
+                outlined
+                background-color="white"
+                dense
+                hide-details
+              ></v-text-field>
+              <div class="d-flex justify-end mb-3">
+                <v-btn dark color="purple" @click="addHistory">Tambah</v-btn>
+              </div>
+              <v-divider></v-divider>
+              <div class="py-3" v-if="konten.history.length">
+                <div
+                  class="d-flex mb-2"
+                  v-for="(item, i) in konten.history"
+                  :key="i"
+                >
+                  <v-card class="pa-2 flexy mr-2">
+                    {{ item.category }} di {{ item.value }} ||
+                    {{ item.keahlian }}
+                  </v-card>
+                  <v-btn @click="deleteItem(i)"
+                    ><v-icon>mdi-delete</v-icon></v-btn
+                  >
+                </div>
+              </div>
+            </div>
+
+            <v-divider></v-divider>
+
             <div class="py-3">
               <v-btn color="purple" dark block v-if="!loading" @click="postData"
                 >Simpan</v-btn
@@ -84,6 +140,16 @@ export default {
       loading: false,
       picture: null,
       alert: false,
+      category: ["S1", "S2", "S3", "PT"],
+      history: {
+        category: "",
+        value: "",
+        keahlian: "",
+      },
+      konten: {
+        jabatan: "",
+        history: [],
+      },
       form: {
         judul: "",
         konten: "",
@@ -94,6 +160,17 @@ export default {
     };
   },
   methods: {
+    deleteItem(i) {
+      this.konten.history.splice(i, 1);
+    },
+    addHistory() {
+      this.konten.history.push(this.history);
+      this.history = {
+        category: "",
+        value: "",
+        kahlian: "",
+      };
+    },
     closeAndFetch() {
       this.$emit("refetch");
       this.$emit("close");
@@ -115,6 +192,7 @@ export default {
     async postData() {
       this.loading = true;
       let body = new FormData();
+      this.form.konten = JSON.stringify(this.konten);
       for (let key in this.form) {
         if (this.form[key]) {
           body.append(key, this.form[key]);
@@ -132,6 +210,10 @@ export default {
           this.form.judul = "";
           this.form.konten = "";
           this.form.featured_image = null;
+          this.konten = {
+            jabatan: "",
+            history: [],
+          };
         }
         this.loading = false;
       } catch (err) {

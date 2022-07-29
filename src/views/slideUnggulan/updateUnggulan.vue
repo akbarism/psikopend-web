@@ -114,7 +114,7 @@ export default {
     async postData() {
       this.loading = true;
       delete this.inventory.picture;
-      let body = new FormData();
+      let body = new URLSearchParams();
       for (let key in this.inventory) {
         if (this.inventory[key]) {
           body.append(key, this.inventory[key]);

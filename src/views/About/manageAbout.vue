@@ -190,7 +190,7 @@ export default {
         judul: "About",
         konten: JSON.stringify(this.form),
         status_id: 2,
-        kategori_id: 7,
+        kategori_id: 22,
       };
       if (this.dataSet) {
         method = "putData";

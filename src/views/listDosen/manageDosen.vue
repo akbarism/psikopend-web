@@ -32,6 +32,7 @@
               </v-avatar>
             </div>
           </template>
+
           <template v-slot:[`item.actions`]="{ item }">
             <div class="d-flex">
               <v-tooltip top>
@@ -155,9 +156,9 @@ export default {
           value: "judul",
         },
         {
-          text: "DESKRIPSI",
+          text: "Jabatan",
           sortable: false,
-          value: "konten",
+          value: "jabatan",
         },
 
         { text: "ACTION", sortable: false, value: "actions", cols: "action" },
@@ -182,8 +183,14 @@ export default {
       };
       try {
         let res = await this.$store.dispatch("getData", data);
-        console.log(res);
-        this.dataSet = res.data.data;
+        if (res.data.data.length) {
+          this.dataSet = res.data.data;
+          this.dataSet.forEach((el) => {
+            let parsed = JSON.parse(el.konten);
+            el["jabatan"] = parsed.jabatan ? parsed.jabatan : "";
+            el["history"] = parsed.history.length ? parsed.history : [];
+          });
+        }
         this.loading = false;
       } catch (err) {
         console.log(err);
@@ -195,7 +202,10 @@ export default {
       this.inventory = {
         id: item.id,
         judul: item.judul,
-        konten: item.konten,
+        konten: {
+          jabatan: item.jabatan,
+          history: item.history,
+        },
         featured_image: null,
         picture: item.foto,
         status_id: 2,

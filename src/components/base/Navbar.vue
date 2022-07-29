@@ -62,7 +62,7 @@ export default {
       profile: [
         { title: "Tentang Kami", path: "/profile" },
         { title: "Profile Lulusan", path: "/lulusan" },
-        { title: "Dosen Pengampu", path: "/sambutan" },
+        { title: "Dosen Pengampu", path: "/view-dosen" },
       ],
       akademik: [
         { title: "Kurikulum", path: "/sambutan" },

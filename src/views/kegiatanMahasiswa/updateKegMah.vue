@@ -189,7 +189,7 @@ export default {
     async postData() {
       this.loading = true;
       this.form.kategori_id = JSON.stringify(this.form.kategori_id);
-      let body = new FormData();
+      let body = new URLSearchParams();
       for (let key in this.form) {
         if (this.form[key]) {
           body.append(key, this.form[key]);

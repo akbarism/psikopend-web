@@ -7,7 +7,7 @@
         <div style="padding: 50px" v-if="!loading && dataSet">
           <p>
             {{ $date(dataSet.created_at).format("D MMM") }} |
-            {{ item.updated_by.name }}
+            {{ dataSet.updated_by.name }}
           </p>
           <v-divider></v-divider>
           <p class="title_article mb-3">

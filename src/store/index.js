@@ -46,6 +46,8 @@ export default new Vuex.Store({
     },
     async putData(context, data) {
       let config = context.state.config;
+      config.headers["Content-Type"] = "application/x-www-form-urlencoded";
+      console.log(config)
       let env = context.state.env;
       const res = await axios.put(`${env}api/${data.path}`, data.body, config);
       try {

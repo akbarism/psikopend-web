@@ -101,7 +101,7 @@ export default {
       loading: false,
       inventory: null,
       page: 1,
-      limit: 100,
+      limit: 10,
       find: "",
       dataSet: [],
       headers: [

@@ -72,7 +72,7 @@ export default {
         },
         {
           name: "Profile Lulusan",
-          path: "/profile-lulusan",
+          path: "/manage-profile-lulusan",
           icon: "mdi-account-school",
         },
         {
@@ -81,8 +81,13 @@ export default {
           icon: "mdi-information-outline",
         },
         {
-          name: "Page",
-          path: "/page-management",
+          name: "Akademik",
+          path: "/manage-akademik",
+          icon: "mdi-page-previous",
+        },
+        {
+          name: "List Page",
+          path: "/list-page-management",
           icon: "mdi-page-previous",
         },
       ],
